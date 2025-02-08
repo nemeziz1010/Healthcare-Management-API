@@ -1,0 +1,51 @@
+2025-02-07 02:38:56,662 - ERROR - Error in /login/: Mapper 'Mapper[Patient(patients)]' has no property 'appointments'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+2025-02-07 02:39:04,103 - ERROR - Error in /register/: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Appointment(appointments)]'. Original exception was: Mapper 'Mapper[Patient(patients)]' has no property 'appointments'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+2025-02-07 02:39:56,967 - ERROR - Error in /register/: Mapper 'Mapper[Patient(patients)]' has no property 'appointments'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+2025-02-07 02:42:03,555 - ERROR - Error in /register/: 400: Username already exists
+2025-02-07 02:43:52,218 - ERROR - Error in /register/: 400: Username already exists
+2025-02-07 02:46:39,808 - ERROR - Error in /register/: 400: Username already exists
+2025-02-07 02:46:39,811 - ERROR - URL: http://127.0.0.1:8000/register/ | Method: POST | Error: name 'traceback' is not defined
+2025-02-07 02:47:20,186 - ERROR - Error in /register/: 400: Username already exists
+2025-02-07 02:47:20,189 - ERROR - Traceback (most recent call last):
+  File "C:\coding\ArgoAi updated\fastapi-ehr\main.py", line 61, in register_user
+    raise HTTPException(status_code=400, detail="Username already exists")
+fastapi.exceptions.HTTPException: 400: Username already exists
+
+2025-02-07 02:48:18,950 - ERROR - URL: http://127.0.0.1:8000/register-doctor/ | Method: POST | Error: (psycopg2.errors.UndefinedTable) relation "doctors" does not exist
+LINE 2: FROM doctors 
+             ^
+
+[SQL: SELECT doctors.id AS doctors_id, doctors.name AS doctors_name, doctors.specialization AS doctors_specialization, doctors.contact AS doctors_contact, doctors.email AS doctors_email, doctors.hashed_password AS doctors_hashed_password 
+FROM doctors 
+WHERE doctors.email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'dr.john@example.com', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-02-07 02:58:04,542 - ERROR - URL: http://127.0.0.1:8000/add-availability/ | Method: POST | Error: (psycopg2.errors.UndefinedColumn) column "is_booked" of relation "availability_slots" does not exist
+LINE 1: ...T INTO availability_slots (doctor_id, date, time, is_booked)...
+                                                             ^
+
+[SQL: INSERT INTO availability_slots (doctor_id, date, time, is_booked) VALUES (%(doctor_id)s, %(date)s, %(time)s, %(is_booked)s) RETURNING availability_slots.id]
+[parameters: {'doctor_id': 1, 'date': '2025-02-10', 'time': '10:00 AM', 'is_booked': False}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-02-07 02:59:35,652 - ERROR - URL: http://127.0.0.1:8000/add-availability/ | Method: POST | Error: (psycopg2.errors.UndefinedColumn) column "is_booked" of relation "availability_slots" does not exist
+LINE 1: ...T INTO availability_slots (doctor_id, date, time, is_booked)...
+                                                             ^
+
+[SQL: INSERT INTO availability_slots (doctor_id, date, time, is_booked) VALUES (%(doctor_id)s, %(date)s, %(time)s, %(is_booked)s) RETURNING availability_slots.id]
+[parameters: {'doctor_id': 1, 'date': '2025-02-10', 'time': '10:00 AM', 'is_booked': False}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-02-07 03:07:40,511 - ERROR - URL: http://127.0.0.1:8000/book-appointment/ | Method: POST | Error: (psycopg2.errors.UndefinedColumn) column "created_at" of relation "appointments" does not exist
+LINE 1: ...intments (patient_id, doctor_id, slot_id, status, created_at...
+                                                             ^
+
+[SQL: INSERT INTO appointments (patient_id, doctor_id, slot_id, status, created_at) VALUES (%(patient_id)s, %(doctor_id)s, %(slot_id)s, %(status)s, %(created_at)s) RETURNING appointments.id]
+[parameters: {'patient_id': 1, 'doctor_id': 1, 'slot_id': 1, 'status': 'Booked', 'created_at': datetime.datetime(2025, 2, 6, 21, 37, 40, 502003)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-02-07 13:05:21,327 - ERROR - URL: http://127.0.0.1:8000/book-appointment/ | Method: POST | Error: (psycopg2.errors.UndefinedColumn) column "created_at" of relation "appointments" does not exist
+LINE 1: ...intments (patient_id, doctor_id, slot_id, status, created_at...
+                                                             ^
+
+[SQL: INSERT INTO appointments (patient_id, doctor_id, slot_id, status, created_at) VALUES (%(patient_id)s, %(doctor_id)s, %(slot_id)s, %(status)s, %(created_at)s) RETURNING appointments.id]
+[parameters: {'patient_id': 1, 'doctor_id': 1, 'slot_id': 1, 'status': 'Booked', 'created_at': datetime.datetime(2025, 2, 7, 7, 35, 21, 312934)}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
